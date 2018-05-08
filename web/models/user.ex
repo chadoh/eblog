@@ -6,7 +6,7 @@ defmodule Eblog.User do
     field :username, :string
     field :email, :string
     field :password_digest, :string
-    timestamps
+    timestamps()
     # Virtual Fields
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true

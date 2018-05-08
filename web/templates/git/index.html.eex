@@ -1,0 +1,26 @@
+<h2>Listing add</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>.</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for git <- @add do %>
+    <tr>
+      <td><%= git.. %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: git_path(@conn, :show, git), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: git_path(@conn, :edit, git), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: git_path(@conn, :delete, git), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New git", to: git_path(@conn, :new) %>
