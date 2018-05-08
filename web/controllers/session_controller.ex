@@ -17,13 +17,13 @@ defmodule Eblog.SessionController do
   def delete(conn, _params) do
     conn
     |> delete_session(:current_user)
-    |> put_flash(:info, "Signed out successfully!")
+    |> put_flash(:info, "Signed out")
     |> redirect(to: page_path(conn, :index))
   end
 
   defp sign_in(user, password, conn) when is_nil(user) do
   conn
-  |> put_flash(:error, "Invalid username/password combination!")
+  |> put_flash(:error, "Invalid username/password")
   |> redirect(to: page_path(conn, :index))
 end
 
@@ -31,12 +31,12 @@ end
     if checkpw(password, user.password_digest) do
       conn
       |> put_session(:current_user, %{id: user.id, username: user.username})
-      |> put_flash(:info, "Sign in successful!")
+      |> put_flash(:info, "Sign in successful")
       |> redirect(to: page_path(conn, :index))
     else
       conn
       |> put_session(:current_user, nil)
-      |> put_flash(:error, "Invalid username/password combination!")
+      |> put_flash(:error, "Invalid username/password")
       |> redirect(to: page_path(conn, :index))
   end
 end

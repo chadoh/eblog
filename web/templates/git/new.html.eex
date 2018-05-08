@@ -1,6 +1,0 @@
-<h2>New git</h2>
-
-<%= render "form.html", changeset: @changeset,
-                        action: git_path(@conn, :create) %>
-
-<%= link "Back", to: git_path(@conn, :index) %>
