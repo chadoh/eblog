@@ -31,7 +31,7 @@ body, form, ul, table {
   display: inline-block;
   margin-top: 0.5em;
   margin-bottom: 1em;
-  background-image: url("/images/phoenix.png");
+  background-image: url("/images/playbook-logo copy.png");
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -70,11 +70,16 @@ body, form, ul, table {
     padding-right: 0;
     padding-left: 0;
   }
+
+  body {
+    color: blue;
+  }
+
   .logo {
-    width: 519px;
-    height: 71px;
+    width: 300px;
+    height: 300px;
     margin-top: 0;
-    background-size: 519px 71px;
+    margin-left: 25%;
   }
   /* Space out the masthead */
   .header {

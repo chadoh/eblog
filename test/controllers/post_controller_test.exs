@@ -15,13 +15,13 @@ defmodule Eblog.PostControllerTest do
     assert html_response(conn, 200) =~ "New post"
   end
 
-  test "creates resource and redirects when data is valid", %{conn: conn} do
+  test "creates resource and redirects when valid", %{conn: conn} do
     conn = post conn, post_path(conn, :create), post: @valid_attrs
     post = Repo.get_by!(Post, @valid_attrs)
     assert redirected_to(conn) == post_path(conn, :show, post.id)
   end
 
-  test "does not create resource and renders errors when data is invalid", %{conn: conn} do
+  test "does not create resource and renders errors when invalid", %{conn: conn} do
     conn = post conn, post_path(conn, :create), post: @invalid_attrs
     assert html_response(conn, 200) =~ "New post"
   end
@@ -44,14 +44,14 @@ defmodule Eblog.PostControllerTest do
     assert html_response(conn, 200) =~ "Edit post"
   end
 
-  test "updates chosen resource and redirects when data is valid", %{conn: conn} do
+  test "updates chosen resource and redirects when valid", %{conn: conn} do
     post = Repo.insert! %Post{}
     conn = put conn, post_path(conn, :update, post), post: @valid_attrs
     assert redirected_to(conn) == post_path(conn, :show, post)
     assert Repo.get_by(Post, @valid_attrs)
   end
 
-  test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
+  test "does not update chosen resource and renders errors when invalid", %{conn: conn} do
     post = Repo.insert! %Post{}
     conn = put conn, post_path(conn, :update, post), post: @invalid_attrs
     assert html_response(conn, 200) =~ "Edit post"

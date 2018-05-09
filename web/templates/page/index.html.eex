@@ -1,35 +1,35 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <h2><%= gettext "Welcome to %{name}", name: "The Playbook Daily" %></h2>
+  <p class="lead">Sports/Lifestyle Blog</p>
 </div>
 
 <div class="row marketing">
   <div class="col-lg-6">
-    <h4>Resources</h4>
+    <h4>Freelance Work</h4>
     <ul>
       <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
+        <a href="https://www.12up.com/users/14327715">12up Sports</a>
       </li>
       <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
+        <a href="https://coed.com/author/smh1212/">COED Media</a>
       </li>
       <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
+        <a href="https://us.blastingnews.com/editorial-staff/shane-holbein/">Blasting News</a>
       </li>
     </ul>
   </div>
 
   <div class="col-lg-6">
-    <h4>Help</h4>
+    <h4>Social Media</h4>
     <ul>
       <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
+        <a href="https://www.facebook.com/theplaybookdaily/?ref=aymt_homepage_panel">Facebook</a>
       </li>
       <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
+        <a href="https://twitter.com/Playbook_Daily">Twitter</a>
       </li>
       <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
+        <a href="https://theplaybookdaily.com/">Website</a>
       </li>
     </ul>
   </div>
