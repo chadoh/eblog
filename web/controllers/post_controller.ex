@@ -1,6 +1,7 @@
 defmodule Eblog.PostController do
   use Eblog.Web, :controller
   plug :assign_user
+  plug :authorize_user when action in [:new, :create, :update, :edit, :delete]
   alias Eblog.Post
 
   def index(conn, _params) do
@@ -24,7 +25,7 @@ defmodule Eblog.PostController do
     case Repo.insert(changeset) do
       {:ok, _post} ->
         conn
-        |> put_flash(:info, "Post created successfully.")
+        |> put_flash(:info, "Post created.")
         |> redirect(to: user_post_path(conn, :index, conn.assigns[:user]))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -48,7 +49,7 @@ defmodule Eblog.PostController do
     case Repo.update(changeset) do
       {:ok, post} ->
         conn
-        |> put_flash(:info, "Post updated successfully.")
+        |> put_flash(:info, "Post updated.")
         |> redirect(to: user_post_path(conn, :show, conn.assigns[:user], post))
       {:error, changeset} ->
         render(conn, "edit.html", post: post, changeset: changeset)
@@ -59,7 +60,7 @@ defmodule Eblog.PostController do
     post = Repo.get!(assoc(conn.assigns[:user], :posts), id)
     Repo.delete!(post)
     conn
-    |> put_flash(:info, "Post deleted successfully.")
+    |> put_flash(:info, "Post deleted.")
     |> redirect(to: user_post_path(conn, :index, conn.assigns[:user]))
   end
 
@@ -76,9 +77,21 @@ defmodule Eblog.PostController do
 
   defp invalid_user(conn) do
     conn
-    |> put_flash(:error, "Invalid user!")
+    |> put_flash(:error, "Invalid user")
     |> redirect(to: page_path(conn, :index))
     |> halt
   end
+
+  defp authorize_user(conn, _opts) do
+      user = get_session(conn, :current_user)
+      if user && Integer.to_string(user.id) == conn.params["user_id"] do
+        conn
+      else
+        conn
+        |> put_flash(:error, "You are not authorized")
+        |> redirect(to: page_path(conn, :index))
+        |> halt()
+      end
+    end
 
 end
