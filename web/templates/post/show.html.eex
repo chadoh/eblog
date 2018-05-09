@@ -6,7 +6,6 @@
     <strong>Title:</strong>
     <%= @post.title %>
   </li>
-
   <li>
     <strong>Body:</strong>
     <%= @post.body %>
@@ -14,5 +13,5 @@
 
 </ul>
 
-<span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>
-<span><%= link "Back", to: post_path(@conn, :index) %></span>
+<%= link "Edit", to: user_post_path(@conn, :edit, @user, @post) %>
+<%= link "Back", to: user_post_path(@conn, :index, @user) %>
