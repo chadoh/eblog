@@ -83,15 +83,15 @@ defmodule Eblog.PostController do
   end
 
   defp authorize_user(conn, _opts) do
-      user = get_session(conn, :current_user)
-      if user && Integer.to_string(user.id) == conn.params["user_id"] do
-        conn
-      else
-        conn
-        |> put_flash(:error, "You are not authorized")
-        |> redirect(to: page_path(conn, :index))
-        |> halt()
-      end
+    user = get_session(conn, :current_user)
+    if user && Integer.to_string(user.id) == conn.params["user_id"] do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You are not authorized")
+      |> redirect(to: page_path(conn, :index))
+      |> halt()
     end
+  end
 
 end
